@@ -1,11 +1,11 @@
-<model-viewer src="monkey.gltf" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster.webp" shadow-intensity="2" shadow-softness="0.91" environment-image="legacy" camera-orbit="36.3deg 66.02deg 10.68m" field-of-view="26.26deg">
-    <button class="Hotspot" slot="hotspot-2" data-position="2.8370910430156338m 2.0220637191000352m -0.20280230022490464m" data-normal="0.13196184542018924m 0.9750047177542644m -0.17875086492161513m" data-visibility-attribute="visible">
-        <div class="HotspotAnnotation">monkey_1</div>
-    </button><button class="Hotspot" slot="hotspot-3" data-position="0.20386111705515475m 2.0197460053669376m -0.04066267064612994m" data-normal="0.11285935014599287m 0.9674672594275993m 0.22642850752560834m" data-visibility-attribute="visible">
-        <div class="HotspotAnnotation">monkey_2
-        </div>
-    </button>
+<model-viewer src="omer _1.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster.webp" shadow-intensity="0" ar-placement="wall" touch-action="pan-y" alt="A 3D model of some wall art" camera-orbit="52.92deg 77.5deg 1.812m" field-of-view="30deg" auto-rotate>
     <div class="progress-bar hide" slot="progress-bar">
         <div class="update-bar"></div>
+    </div>
+    <button slot="ar-button" id="ar-button">
+        View in your space
+    </button>
+    <div id="ar-prompt">
+        <img src="https://modelviewer.dev/shared-assets/icons/hand.png">
     </div>
 </model-viewer>
