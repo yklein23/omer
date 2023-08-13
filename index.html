@@ -5,11 +5,18 @@
     <meta charset="utf-8">
     <meta name="description" content="&lt;model-viewer&gt; template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link type="text/css" href="./styles.css" rel="stylesheet"/>
+    <link type="text/css" href="" rel="stylesheet"/>
+
+    <style>
+     model-viewer {
+     width: 800px;
+     height: 600px;
+}
+</style>
   </head>
   <body>
     <!-- <model-viewer> HTML element -->
-    <model-viewer src="monkey.gltf" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster.webp" shadow-intensity="2" shadow-softness="0.91" environment-image="legacy" camera-orbit="36.3deg 66.02deg 10.68m" field-of-view="26.26deg">
+    <model-viewer src="omer _1.glb" ar ar-modes="wall" camera-controls touch-action="pan-y" camera-controls poster="omer_1.webp" shadow-intensity="0" shadow-softness="0.91" environment-image="legacy" camera-orbit="36.3deg 66.02deg 10.68m" field-of-view="26.26deg">
       <button class="Hotspot" slot="hotspot-2" data-position="2.8370910430156338m 2.0220637191000352m -0.20280230022490464m" data-normal="0.13196184542018924m 0.9750047177542644m -0.17875086492161513m" data-visibility-attribute="visible">
           <div class="HotspotAnnotation">monkey_1</div>
       </button><button class="Hotspot" slot="hotspot-3" data-position="0.20386111705515475m 2.0197460053669376m -0.04066267064612994m" data-normal="0.11285935014599287m 0.9674672594275993m 0.22642850752560834m" data-visibility-attribute="visible">
@@ -19,9 +26,176 @@
       <div class="progress-bar hide" slot="progress-bar">
           <div class="update-bar"></div>
       </div>
-    </model-viewer>  
+
+  <div class="slider">
+    <div class="slides">
+      <button class="slide selected" onclick="switchSrc(this, 'omer _1')" style="background-image: url('../omer_1.webp');">
+
+      </button><button class="slide" onclick="switchSrc(this, 'omer _2')" style="background-image: url('../omer_1.webp');">
+
+    </button></div>
+  </div>
+
+
+    </model-viewer>
     <script src="script.js"></script>
     <!-- Loads <model-viewer> for browsers: -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.2.0/model-viewer.min.js"></script>
+
+    <script type="module">
+      const modelViewer = document.querySelector("model-viewer");
+
+      window.switchSrc = (element, name) => {
+        const base = "../" + name;
+        modelViewer.src = base + '.glb';
+        modelViewer.poster = base + '.webp';
+        const slides = document.querySelectorAll(".slide");
+        slides.forEach((element) => {element.classList.remove("selected");});
+        element.classList.add("selected");
+      };
+
+      document.querySelector(".slider").addEventListener('beforexrselect', (ev) => {
+        // Keep slider interactions from affecting the XR scene.
+        ev.preventDefault();
+      });
+    </script>
+
+
+
+
+
+    <style>
+      /* This keeps child nodes hidden while the element loads */
+      :not(:defined) > * {
+        display: none;
+      }
+
+      model-viewer {
+        background-color: #eee;
+        overflow-x: hidden;
+      }
+
+      #ar-button {
+        background-image: url(../../assets/ic_view_in_ar_new_googblue_48dp.png);
+        background-repeat: no-repeat;
+        background-size: 20px 20px;
+        background-position: 12px 50%;
+        background-color: #fff;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        bottom: 132px;
+        padding: 0px 16px 0px 40px;
+        font-family: Roboto Regular, Helvetica Neue, sans-serif;
+        font-size: 14px;
+        color:#4285f4;
+        height: 36px;
+        line-height: 36px;
+        border-radius: 18px;
+        border: 1px solid #DADCE0;
+      }
+
+      #ar-button:active {
+        background-color: #E8EAED;
+      }
+
+      #ar-button:focus {
+        outline: none;
+      }
+
+      #ar-button:focus-visible {
+        outline: 1px solid #4285f4;
+      }
+
+      @keyframes circle {
+        from { transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg); }
+        to   { transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg); }
+      }
+
+      @keyframes elongate {
+        from { transform: translateX(100px); }
+        to   { transform: translateX(-100px); }
+      }
+
+      model-viewer > #ar-prompt {
+        position: absolute;
+        left: 50%;
+        bottom: 175px;
+        animation: elongate 2s infinite ease-in-out alternate;
+        display: none;
+      }
+
+      model-viewer[ar-status="session-started"] > #ar-prompt {
+        display: block;
+      }
+
+      model-viewer > #ar-prompt > img {
+        animation: circle 4s linear infinite;
+      }
+
+      model-viewer > #ar-failure {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 175px;
+        display: none;
+      }
+
+      model-viewer[ar-tracking="not-tracking"] > #ar-failure {
+        display: block;
+      }
+
+      .slider {
+        width: 100%;
+        text-align: center;
+        overflow: hidden;
+        position: absolute;
+        bottom: 16px;
+      }
+
+      .slides {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .slide {
+        scroll-snap-align: start;
+        flex-shrink: 0;
+        width: 100px;
+        height: 100px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: #fff;
+        margin-right: 10px;
+        border-radius: 10px;
+        border: none;
+        display: flex;
+      }
+
+      .slide.selected {
+        border: 2px solid #4285f4;
+      }
+
+      .slide:focus {
+        outline: none;
+      }
+
+      .slide:focus-visible {
+        outline: 1px solid #4285f4;
+      }
+
+    </style>
+
+
+
+
+
+
+
   </body>
 </html>
