@@ -13,21 +13,13 @@ const onProgress = (event) => {
 document.querySelector('model-viewer').addEventListener('progress', onProgress);
 
 
+const modelViewerColor = document.querySelector("model-viewer#color");
 
-<script type="module">
-  const modelViewer = document.querySelector("model-viewer");
+const colorInput = document.querySelector('.color-input');
 
-  window.switchSrc = (element, name) => {
-    const base = "../" + name;
-    modelViewer.src = base + '.gltf';
-    modelViewer.poster = base + '.webp';
-    const slides = document.querySelectorAll(".slide");
-    slides.forEach((element) => {element.classList.remove("selected");});
-    element.classList.add("selected");
-  };
+colorInput.addEventListener('click', (event)  => {
 
-  document.querySelector(".slider").addEventListener('beforexrselect', (ev) => {
-    // Keep slider interactions from affecting the XR scene.
-    ev.preventDefault();
-  });
-</script>
+  const colorString = event.target.dataset.color;
+  const [material] = modelViewerColor.model.materials;
+  material.pbrMetallicRoughness.setBaseColorFactor(colorInput.value);
+});
