@@ -167,3 +167,24 @@ model-viewer[ar-status="session-started"] > #ar-prompt {
 model-viewer > #ar-prompt > img {
   animation: circle 4s linear infinite;
 }
+
+
+
+.color-input {
+	position: fixed;
+	top: 85%;
+	left: 20%;
+	
+	height: 30px;
+	width: 120px;
+  
+}
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  top: 10%;
+	left: 20%;
+  color: #4CAF50;
+}
+
