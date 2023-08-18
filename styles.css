@@ -180,11 +180,5 @@ model-viewer > #ar-prompt > img {
   
 }
 
-h1 {
-  text-align: center;
-  text-transform: uppercase;
-  top: 10%;
-	left: 20%;
-  color: #4CAF50;
-}
+
 
