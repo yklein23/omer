@@ -13,4 +13,4 @@ const onProgress = (event) => {
 document.querySelector('model-viewer').addEventListener('progress', onProgress);
 
 
-material.pbrMetallicRoughness.setBaseColorFactor([0.7294, 0.5333, 0.0392]);
+material.pbrMetallicRoughness.setBaseColorFactor([1, 0, 0]);
