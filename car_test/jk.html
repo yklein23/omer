@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Google Web Designer 16.0.4.0424">
+  <meta name="template" content="Expandable 3.0.0">
+  <meta name="environment" content="gwd-dv360">
+  <meta data-template-name="gwd-Swirl_Color_Selector_Expandable_300x250">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="gwdpage_style.css" rel="stylesheet" data-version="13" data-exports-type="gwd-page">
+  <link href="gwdpagedeck_style.css" rel="stylesheet" data-version="14" data-exports-type="gwd-pagedeck">
+  <link href="gwd3dmodelviewer_style.css" rel="stylesheet" data-version="2" data-exports-type="gwd-3d-model-viewer">
+  <link href="gwdgooglead_style.css" rel="stylesheet" data-version="9" data-exports-type="gwd-google-ad">
+  <link href="gwdimage_style.css" rel="stylesheet" data-version="17" data-exports-type="gwd-image">
+  <link href="gwdswirl_style.css" rel="stylesheet" data-version="4" data-exports-type="gwd-swirl">
+  <link href="gwdtaparea_style.css" rel="stylesheet" data-version="7" data-exports-type="gwd-taparea">
+  <style id="gwd-lightbox-style">
+    .gwd-lightbox {
+      overflow: hidden;
+    }
+  </style>
+  <style id="gwd-text-style">
+    p {
+      margin: 0px;
+    }
+    h1 {
+      margin: 0px;
+    }
+    h2 {
+      margin: 0px;
+    }
+    h3 {
+      margin: 0px;
+    }
+  </style>
+  <style>
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0px;
+    }
+    .gwd-page-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .gwd-page-content {
+      background-color: transparent;
+      transform: perspective(1400px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      transform-style: preserve-3d;
+      position: absolute;
+    }
+    .gwd-page-content * {
+      transform-style: preserve-3d;
+    }
+    .gwd-page-wrapper {
+      background-color: rgb(255, 255, 255);
+      position: absolute;
+      transform: translateZ(0px);
+    }
+    .banner {
+      width: 300px;
+      height: 250px;
+    }
+    .expanded {
+      width: 100%;
+      height: 100%;
+    }
+    .expanded .gwd-page-content {
+      width: 100%;
+      height: 100%;
+    }
+    .expand-button {
+      position: absolute;
+      left: 1%;
+      width: 50px;
+      height: 50px;
+      top: 99%;
+      transform: translate3d(0px, -50px, 0px);
+      transform-style: preserve-3d;
+    }
+    .close-button {
+      position: absolute;
+      left: 100%;
+      width: 50px;
+      height: 50px;
+      visibility: hidden;
+      transform-style: preserve-3d;
+      top: 0px;
+      transform: translate3d(-55px, 55px, 0px);
+    }
+    .gwd-taparea-148s {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      background-color: rgb(0, 0, 0);
+      height: 50px;
+      width: 100%;
+    }
+    #header-taparea {
+      transition: opacity 500ms ease 0s;
+      background-image: none;
+    }
+    .logo-image {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 134px;
+      height: 50px;
+    }
+    .cta-image {
+      position: absolute;
+      left: 100%;
+      transform-style: preserve-3d;
+      top: 0px;
+      width: 115px;
+      height: 50px;
+      transform: translate3d(-115px, 0px, 0px);
+    }
+    .gwd-swirl-1jhj {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0px;
+      top: 0px;
+    }
+    .expanded #gwd-3d-model-viewer_1 {
+      transform: none !important;
+      width: 100% !important;
+      height: 100% !important;
+    }
+    .expanded .close-button {
+      visibility: visible;
+    }
+    .expanded .expand-button {
+      visibility: hidden;
+    }
+    .expanded #header-taparea {
+      opacity: 1 !important;
+    }
+    .expanded #gwd-swirl_1 > div {
+      opacity: 0 !important;
+    }
+    .interacting-with-swirl #header-taparea {
+      opacity: 0;
+    }
+    .interacting-with-swirl #gwd-swirl_1 > div {
+      opacity: 0 !important;
+    }
+    .gwd-image-ccm7 {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0px;
+      top: 0px;
+    }
+    .gwd-image-10n7 {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0px;
+      top: 0px;
+    }
+    #gwd-3d-model-viewer_1 .gesture-cue-icon {
+      top: 76%;
+    }
+    .expanded #gwd-3d-model-viewer_1 .gesture-cue-icon {
+      top: 85%;
+    }
+    #gwd-3d-model-viewer_1 .gesture-cue-text {
+      top: 70%;
+      text-shadow: none;
+      color: rgb(24, 24, 24);
+    }
+    .expanded #gwd-3d-model-viewer_1 .gesture-cue-text {
+      top: 83%;
+    }
+    .color-chips-container {
+      position: absolute;
+      height: 50px;
+      width: 172px;
+      top: 100%;
+      transform-style: preserve-3d;
+      left: 50%;
+      transform: translate3d(-80px, -55px, 0px);
+    }
+    #colorchips .color-chip {
+      position: absolute;
+      cursor: pointer;
+      border: 1px solid rgb(255, 255, 255);
+      border-radius: 14px;
+      box-sizing: border-box;
+      box-shadow: rgba(60, 64, 67, 0.15) 0px 1px 3px, rgba(60, 64, 67, 0.3) 0px 1px 2px;
+      width: 28px;
+      height: 28px;
+    }
+    .interacting-with-swirl #colorchips {
+      opacity: 0;
+    }
+    .expanded #colorchips {
+      opacity: 1 !important;
+    }
+    #white_colorchip {
+      background-color: rgb(245, 245, 245);
+      top: 50%;
+      transform-style: preserve-3d;
+      left: 0px;
+      transform: translate3d(0px, -14px, 0px);
+    }
+    #yellow_colorchip {
+      background-color: rgb(255, 235, 59);
+      top: 50%;
+      transform-style: preserve-3d;
+      left: 33.3333%;
+      transform: translate3d(-9px, -14px, 0px);
+    }
+    #blue_colorchip {
+      background-color: rgb(14, 26, 169);
+      top: 50%;
+      transform-style: preserve-3d;
+      left: 66.6667%;
+      transform: translate3d(-19px, -14px, 0px);
+    }
+    #black_colorchip {
+      background-color: rgb(0, 0, 0);
+      top: 50%;
+      transform: translate3d(-28px, -14px, 0px);
+      transform-style: preserve-3d;
+      left: 100%;
+    }
+    #color-chip-selected-overlay {
+      position: absolute;
+      width: 38px;
+      height: 38px;
+      border: 2px solid rgb(255, 255, 255);
+      border-radius: 19px;
+      box-shadow: rgba(60, 64, 67, 0.15) 0px 1px 3px, rgba(60, 64, 67, 0.3) 0px 1px 2px, rgba(60, 64, 67, 0.3) 0px 1px 3px inset;
+      box-sizing: border-box;
+      top: 50%;
+      transform: translate3d(0px, -19px, 0px);
+      transform-style: preserve-3d;
+      left: -5px;
+    }
+    .gwd-image-x7gf {
+      display: block;
+      height: 100%;
+      left: 0px;
+      position: absolute;
+      top: 0px;
+      width: 100%;
+    }
+  </style>
+  <script data-source="gwd_webcomponents_v1_min.js" data-version="2" data-exports-type="gwd_webcomponents_v1" src="gwd_webcomponents_v1_min.js"></script>
+  <script data-source="https://s0.2mdn.net/ads/studio/Enabler.js" data-exports-type="gwd-google-ad" src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
+  <script data-source="gwdpage_min.js" data-version="13" data-exports-type="gwd-page" src="gwdpage_min.js"></script>
+  <script data-source="gwdpagedeck_min.js" data-version="14" data-exports-type="gwd-pagedeck" src="gwdpagedeck_min.js"></script>
+  <script data-source="https://ajax.googleapis.com/ajax/libs/model-viewer/1.6.0/model-viewer.min.js" data-exports-type="gwd-3d-model-viewer" type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/1.6.0/model-viewer.min.js"></script>
+  <script data-source="gwd3dmodelviewer_min.js" data-version="2" data-exports-type="gwd-3d-model-viewer" src="gwd3dmodelviewer_min.js"></script>
+  <script data-source="gwdgooglead_min.js" data-version="9" data-exports-type="gwd-google-ad" src="gwdgooglead_min.js"></script>
+  <script data-source="gwdimage_min.js" data-version="17" data-exports-type="gwd-image" src="gwdimage_min.js"></script>
+  <script data-source="gwdswirl_min.js" data-version="4" data-exports-type="gwd-swirl" src="gwdswirl_min.js"></script>
+  <script data-source="gwdtaparea_min.js" data-version="7" data-exports-type="gwd-taparea" src="gwdtaparea_min.js"></script>
+</head>
+
+<body class="document-body">
+  <script gwd-events="support" src="gwd-events-support.1.0.js"></script>
+  <gwd-google-ad id="gwd-ad" polite-load="" expanded_responsive="">
+    <gwd-metric-configuration>
+      <gwd-metric-event source="expand-button" event="tapareaexit" metric="" exit="Exit"></gwd-metric-event>
+      <gwd-metric-event source="close-button" event="tapareaexit" metric="" exit="Exit"></gwd-metric-event>
+      <gwd-metric-event source="header-taparea" event="tapareaexit" metric="" exit="Exit"></gwd-metric-event>
+    </gwd-metric-configuration>
+    <gwd-pagedeck class="gwd-page-container" id="pagedeck" default-page="banner-page">
+      <gwd-page id="banner-page" data-gwd-name="Banner page" class="gwd-page-wrapper banner gwd-lightbox" data-gwd-width="300px" data-gwd-height="250px">
+        <div class="gwd-page-content banner">
+          <gwd-image id="bg" source="assets/bg.jpg" scaling="cover" class="gwd-image-x7gf"></gwd-image>
+          <gwd-swirl id="gwd-swirl_1" class="gwd-swirl-1jhj" data-gwd-name="Swirl" start="0.2" end="0.8" yscroll="0.5">
+            <gwd-3d-model-viewer id="gwd-3d-model-viewer_1" data-gwd-name="3D Model" gesture-cue-icon="assets/gesture.png" gesture-cue-text="SWIPE TO ROTATE" height="100%" width="100%" xenter="0px" xexit="0px" yenter="0px" yexit="0px" yawenter="0" yawexit="360" class="gwd-3d-model-1mhr" src="assets/car/car.glb"></gwd-3d-model-viewer>
+          </gwd-swirl>
+          <gwd-taparea id="header-taparea" class="gwd-taparea-148s">
+            <gwd-image id="bannerLogo" source="assets/logo.png" scaling="contain" class="logo-image"></gwd-image>
+            <gwd-image id="bannerCTA" source="assets/CTA.png" scaling="contain" class="cta-image"></gwd-image>
+          </gwd-taparea>
+          <gwd-taparea id="expand-button" class="expand-button">
+            <gwd-image id="fullscreenIcon" source="assets/expand.png" scaling="contain" class="gwd-image-10n7"></gwd-image>
+          </gwd-taparea>
+          <gwd-taparea id="close-button" class="close-button">
+            <gwd-image id="close" source="assets/close.png" scaling="contain" class="gwd-image-ccm7"></gwd-image>
+          </gwd-taparea>
+          <div class="color-chips-container" id="colorchips">
+            <div id="color-chip-selected-overlay"></div>
+            <div class="color-chip" id="white_colorchip" data-car-color="white" style="border-width: 2px;"></div>
+            <div class="color-chip" id="yellow_colorchip" data-car-color="yellow"></div>
+            <div class="color-chip" id="blue_colorchip" data-car-color="blue"></div>
+            <div class="color-chip" id="black_colorchip" data-car-color="black"></div>
+          </div>
+        </div>
+      </gwd-page>
+    </gwd-pagedeck>
+  </gwd-google-ad>
+  <script gwd-events="registration">
+    // Support code for event handling in Google Web Designer
+    // This script block is auto-generated. Please do not edit!
+    gwd.actions.events.registerEventHandlers = function(event) {
+      gwd.actions.events.addHandler('expand-button', 'action', gwd.handleExpand_buttonAction, false);
+      gwd.actions.events.addHandler('document.body', 'expandfinish', gwd.handleExpandFinish, false);
+      gwd.actions.events.addHandler('close-button', 'action', gwd.handleClose_buttonAction, false);
+      gwd.actions.events.addHandler('close-button', 'action', gwd.handleClose_reportManualClose, false);
+      gwd.actions.events.addHandler('document.body', 'collapsefinish', gwd.handleCollapseFinish, false);
+      gwd.actions.events.addHandler('gwd-3d-model-viewer_1', 'interaction-start', gwd.handleInteractionStart, false);
+      gwd.actions.events.addHandler('gwd-3d-model-viewer_1', 'interaction-end', gwd.handleInteractionEnd, false);
+      gwd.actions.events.addHandler('header-taparea', 'action', gwd.exitToLandingPage, false);
+      gwd.actions.events.addHandler('black_colorchip', 'click', gwd.auto_Black_colorchipClick, false);
+      gwd.actions.events.addHandler('yellow_colorchip', 'click', gwd.auto_Yellow_colorchipClick, false);
+      gwd.actions.events.addHandler('blue_colorchip', 'click', gwd.auto_Blue_colorchipClick, false);
+      gwd.actions.events.addHandler('white_colorchip', 'click', gwd.auto_White_colorchipClick, false);
+      gwd.actions.events.addHandler('colorchips', 'click', gwd.showSelectedOverlay, false);
+    };
+    gwd.actions.events.deregisterEventHandlers = function(event) {
+      gwd.actions.events.removeHandler('expand-button', 'action', gwd.handleExpand_buttonAction, false);
+      gwd.actions.events.removeHandler('document.body', 'expandfinish', gwd.handleExpandFinish, false);
+      gwd.actions.events.removeHandler('close-button', 'action', gwd.handleClose_buttonAction, false);
+      gwd.actions.events.removeHandler('close-button', 'action', gwd.handleClose_reportManualClose, false);
+      gwd.actions.events.removeHandler('document.body', 'collapsefinish', gwd.handleCollapseFinish, false);
+      gwd.actions.events.removeHandler('gwd-3d-model-viewer_1', 'interaction-start', gwd.handleInteractionStart, false);
+      gwd.actions.events.removeHandler('gwd-3d-model-viewer_1', 'interaction-end', gwd.handleInteractionEnd, false);
+      gwd.actions.events.removeHandler('header-taparea', 'action', gwd.exitToLandingPage, false);
+      gwd.actions.events.removeHandler('black_colorchip', 'click', gwd.auto_Black_colorchipClick, false);
+      gwd.actions.events.removeHandler('yellow_colorchip', 'click', gwd.auto_Yellow_colorchipClick, false);
+      gwd.actions.events.removeHandler('blue_colorchip', 'click', gwd.auto_Blue_colorchipClick, false);
+      gwd.actions.events.removeHandler('white_colorchip', 'click', gwd.auto_White_colorchipClick, false);
+      gwd.actions.events.removeHandler('colorchips', 'click', gwd.showSelectedOverlay, false);
+    };
+    document.addEventListener("DOMContentLoaded", gwd.actions.events.registerEventHandlers);
+    document.addEventListener("unload", gwd.actions.events.deregisterEventHandlers);
+  </script>
+  <script gwd-events="handlers">
+    window.gwd = window.gwd || {};
+    // Keep track of the selected color to use for metric tracking and exit URL.
+    gwd.selectedColor = null;
+    var originalPage = document.getElementById('banner-page');
+    gwd.handleExpand_buttonAction = function() {
+      if (!originalPage.classList.contains('expanded')) {
+        originalPage.classList.add('expanded');
+        Enabler.requestFullscreenExpand();
+      }
+    };
+    gwd.handleClose_buttonAction = function() {
+      Enabler.requestFullscreenCollapse();
+    };
+    gwd.handleClose_reportManualClose = function() {
+      // GWD Predefined Function
+      gwd.actions.gwdGoogleAd.reportManualClose('gwd-ad');
+    };
+    gwd.auto_Gwd_taparea_1Action = function(event) {
+      // GWD Predefined Function
+      gwd.actions.gwdGoogleAd.exit('gwd-ad', 'Clicked on CTA', 'https://www.google.com', true, true, 'banner-page');
+    };
+    gwd.handleInteractionStart = function(event) {
+      originalPage.classList.add("interacting-with-swirl");
+    };
+    gwd.handleInteractionEnd = function(event) {
+      originalPage.classList.remove("interacting-with-swirl");
+    };
+    gwd.reportEngagement = function(event) {
+      Enabler.reportEngagement();
+    };
+    gwd.handleCollapseFinish = function(event) {
+      originalPage.classList.remove('expanded');
+    };
+    gwd.handleExpandFinish = function(event) {
+      originalPage.classList.add('expanded');
+    };
+    gwd.exitToLandingPage = function(event) {
+      Enabler.reportEngagement();
+      // The exit ID and exit URLs must be strings - they can't be composed using variables.
+      if (gwd.selectedColor === 'white') {
+        Enabler.exit('CTA Exit - white', 'https://www.google.com/?q=white');
+      } else if (gwd.selectedColor === 'yellow') {
+        Enabler.exit('CTA Exit - yellow', 'https://www.google.com/?q=yellow');
+      } else if (gwd.selectedColor === 'blue') {
+        Enabler.exit('CTA Exit - blue', 'https://www.google.com/?q=blue');
+      } else if (gwd.selectedColor === 'black') {
+        Enabler.exit('CTA Exit - black', 'https://www.google.com/?q=black');
+      } else {
+        Enabler.exit('CTA Exit', 'https://www.google.com');
+      }
+    };
+    gwd.showSelectedOverlay = function(event) {
+      var overlay = document.getElementById('color-chip-selected-overlay');
+      var colorChips = document.getElementById('colorchips');
+      if (event.target.classList && event.target.classList.contains('color-chip')) {
+        // Report engagement when user selects a different color.
+        Enabler.reportEngagement();
+        // Update the selected color.
+        gwd.selectedColor = event.target.getAttribute('data-car-color');
+        overlay.style.left = Math.round(event.target.getBoundingClientRect().left - colorChips.getBoundingClientRect().left - 5) + 'px';
+        // Reset the border-width of all the color chips.
+        for (const child of colorChips.children) {
+          if (child !== overlay) {
+            child.style.borderWidth = '1px';
+          }
+        }
+        // Update the border-width of the selected color chip to 2px.
+        event.target.style.borderWidth = '2px';
+      }
+    };
+    gwd.auto_Black_colorchipClick = function(event) {
+      // GWD Predefined Function
+      gwd.actions.gwd3dModelViewer.setMaterialColor('gwd-3d-model-viewer_1', 'car paint', 0, 0, 0);
+    };
+    gwd.auto_Yellow_colorchipClick = function(event) {
+      // GWD Predefined Function
+      gwd.actions.gwd3dModelViewer.setMaterialColor('gwd-3d-model-viewer_1', 'car paint', 0.7, 0.5, 0);
+    };
+    gwd.auto_Blue_colorchipClick = function(event) {
+      // GWD Predefined Function
+      gwd.actions.gwd3dModelViewer.setMaterialColor('gwd-3d-model-viewer_1', 'car paint', 0, 0.01, 0.16);
+    };
+    gwd.auto_White_colorchipClick = function(event) {
+      // GWD Predefined Function
+      gwd.actions.gwd3dModelViewer.setMaterialColor('gwd-3d-model-viewer_1', 'car paint', 0.5, 0.5, 0.5);
+    };
+  </script>
+  <script id="gwd-init-code">
+    (function() {
+      var gwdAd = document.getElementById('gwd-ad');
+      /**
+       * Handles the WebComponentsReady event. This event is fired when all
+       * custom elements have been registered and upgraded.
+       */
+      function handleWebComponentsReady(event) {
+        // Start the Ad lifecycle.
+        requestAnimationFrame(function() {
+          setTimeout(function() {
+            gwdAd.initAd();
+          }, 1);
+        });
+      }
+
+      function handleDomContentLoaded(event) {
+        Enabler.addEventListener(studio.events.StudioEvent.FULLSCREEN_EXPAND_START,
+          function() {
+            Enabler.finishFullscreenExpand();
+          }, false);
+        Enabler.addEventListener(studio.events.StudioEvent.FULLSCREEN_COLLAPSE_START,
+          function() {
+            Enabler.finishFullscreenCollapse();
+          }, false);
+        Enabler.addEventListener(studio.events.StudioEvent.FULLSCREEN_EXPAND_FINISH,
+          function() {
+            Enabler.finishExpand();
+            Enabler.counter('Expansion_Ctr');
+            Enabler.startTimer('Expansion_Timer');
+          }, false);
+        Enabler.addEventListener(studio.events.StudioEvent.FULLSCREEN_COLLAPSE_FINISH,
+          function() {
+            Enabler.finishCollapse();
+            Enabler.counter('Collapse_Ctr');
+            Enabler.stopTimer('Expansion_Timer');
+          }, false);
+        Enabler.addEventListener(studio.events.StudioEvent.EXIT,
+          function handleExit() {
+            Enabler.requestFullscreenCollapse();
+          }, false);
+      }
+
+      /**
+       * Handles the event that is dispatched after the Ad has been
+       * initialized and before the default page of the Ad is shown.
+       */
+      function handleAdInitialized(event) {}
+
+      window.addEventListener('DOMContentLoaded',
+        handleDomContentLoaded, false);
+      window.addEventListener('WebComponentsReady',
+        handleWebComponentsReady, false);
+      window.addEventListener('adinitialized',
+        handleAdInitialized, false);
+    })();
+  </script>
+</body>
+
+</html>
