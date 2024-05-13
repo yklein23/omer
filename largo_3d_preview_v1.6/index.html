@@ -252,7 +252,15 @@ c=d.createElement("head");e.parentNode.insertBefore(c,e)}d=d.createElement("styl
     });
   </script>
   <!--model-viewer files-->
-  <model-viewer id="model1" src="assets\largo_floor_mid.glb" ar ar-modes="scene-viewer quick-look" auto-rotate="" camera-controls="pan-y" alt="A 3D model" shadow-intensity="1.88" exposure="0.83" shadow-softness="0.48" with="" slot="progress-bar">
+  <model-viewer id="model1" src="assets\largo_floor_mid.glb" ar ar-modes="webxr scene-viewer quick-look" auto-rotate="" camera-controls="" alt="A 3D model" shadow-intensity="1.88" exposure="0.83" shadow-softness="0.48" with="" slot="progress-bar">    <div class="progress-bar hide" slot="progress-bar">
+        <div class="update-bar"></div>
+    </div>
+    <button slot="ar-button" id="ar-button">
+        View in your space
+    </button>
+    <div id="ar-prompt">
+        <img src="https://modelviewer.dev/shared-assets/icons/hand.png">
+    </div>
   </model-viewer>
   <model-viewer id="model2" src="assets_largo_floor_long_1.glb" ar="" ar-modes="webxr scene-viewer quick-look" auto-rotate="" camera-controls="" alt="A 3D model" shadow-intensity="1.88" exposure="0.83" shadow-softness="0.48" with="" slot="progress-bar">
     <div class="progress-bar hide" slot="progress-bar">
