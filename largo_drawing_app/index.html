@@ -1,22 +1,140 @@
 <!DOCTYPE html>
-<html lang="en-US">
-  <head>
-    <meta charset="utf-8">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canvas</title>
-    <script src="script.js" defer></script>
-    <link href="style.css" rel="stylesheet">
-  </head>
-  <body>
-    <div class="toolbar">
-      <input type="color" aria-label="select pen color" value="#44cfac">
-      <input type="range" min="2" max="50" value="10" aria-label="select pen size"><span class="output">10</span>
-      <button>Clear canvas</button>
-      <button id="sendButton">Send Sketch</button>
+    <title>Sketch Page</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        #canvasContainer {
+            width: 100%;
+            height: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #sketchCanvas {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #000000;
+        }
+        button {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Draw Your Sketch</h1>
+    <div id="canvasContainer">
+        <canvas id="sketchCanvas"></canvas>
     </div>
+    <button id="clearButton">Clear</button>
+    <button id="sendButton">Send Sketch</button>
 
-    <canvas class="myCanvas">
-      <p>Add suitable fallback here.</p>
-    </canvas>
-  </body>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init('XWyJMhUWU7CHyNDVQ'); // Replace with your EmailJS user ID
+        })();
+
+        const canvas = document.getElementById('sketchCanvas');
+        const context = canvas.getContext('2d');
+        let drawing = false;
+
+        function resizeCanvas() {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+            context.scale(canvas.width / 500, canvas.height / 500);
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        window.addEventListener('load', resizeCanvas);
+
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mousemove', draw);
+
+        canvas.addEventListener('touchstart', startDrawing);
+        canvas.addEventListener('touchend', stopDrawing);
+        canvas.addEventListener('touchmove', draw);
+
+        document.getElementById('clearButton').addEventListener('click', clearCanvas);
+        document.getElementById('sendButton').addEventListener('click', sendSketch);
+
+        function getTouchPos(canvas, touchEvent) {
+            const rect = canvas.getBoundingClientRect();
+            return {
+                x: touchEvent.touches[0].clientX - rect.left,
+                y: touchEvent.touches[0].clientY - rect.top
+            };
+        }
+
+        function startDrawing(event) {
+            event.preventDefault();
+            drawing = true;
+            draw(event); // Start drawing immediately
+        }
+
+        function stopDrawing(event) {
+            event.preventDefault();
+            drawing = false;
+            context.beginPath();
+        }
+
+        function draw(event) {
+            event.preventDefault();
+            if (!drawing) return;
+
+            let x, y;
+            if (event.type === 'mousemove') {
+                const rect = canvas.getBoundingClientRect();
+                x = event.clientX - rect.left;
+                y = event.clientY - rect.top;
+            } else if (event.type === 'touchmove') {
+                const touchPos = getTouchPos(canvas, event);
+                x = touchPos.x;
+                y = touchPos.y;
+            }
+
+            context.lineWidth = 5;
+            context.lineCap = 'round';
+            context.strokeStyle = 'black';
+
+            context.lineTo(x, y);
+            context.stroke();
+            context.beginPath();
+            context.moveTo(x, y);
+        }
+
+        function clearCanvas() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.beginPath();
+        }
+
+        function sendSketch() {
+            const dataURL = canvas.toDataURL('image/png');
+            const templateParams = {
+                image_base64: dataURL,
+                to_email: 'yehuda@coool.co.il' // Replace with your email
+            };
+
+            console.log(templateParams); // Log the data to check it
+
+            emailjs.send('service_dm9h5bg', 'template_aijaz58', templateParams)
+                .then(response => {
+                    console.log('SUCCESS!', response.status, response.text);
+                }, error => {
+                    console.log('FAILED...', error);
+                });
+        }
+    </script>
+</body>
 </html>
