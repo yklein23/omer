@@ -38,6 +38,8 @@
         <canvas id="sketchCanvas"></canvas>
     </div>
     <button id="clearButton">Clear</button>
+    <button id="eraseButton">Erase</button>
+    <button id="drawButton">Draw</button>
     <button id="sendButton">Send Sketch</button>
 
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
@@ -49,6 +51,7 @@
         const canvas = document.getElementById('sketchCanvas');
         const context = canvas.getContext('2d');
         let drawing = false;
+        let erasing = false;
 
         function resizeCanvas() {
             const container = document.getElementById('canvasContainer');
@@ -68,6 +71,8 @@
         canvas.addEventListener('touchmove', draw);
 
         document.getElementById('clearButton').addEventListener('click', clearCanvas);
+        document.getElementById('eraseButton').addEventListener('click', enableErase);
+        document.getElementById('drawButton').addEventListener('click', enableDraw);
         document.getElementById('sendButton').addEventListener('click', sendSketch);
 
         function getRelativePos(event) {
@@ -104,7 +109,14 @@
             const pos = getRelativePos(event);
             context.lineWidth = 5;
             context.lineCap = 'round';
-            context.strokeStyle = 'black';
+
+            if (erasing) {
+                context.strokeStyle = 'white';
+                context.globalCompositeOperation = 'destination-out';
+            } else {
+                context.strokeStyle = 'black';
+                context.globalCompositeOperation = 'source-over';
+            }
 
             context.lineTo(pos.x, pos.y);
             context.stroke();
@@ -115,6 +127,14 @@
         function clearCanvas() {
             context.clearRect(0, 0, canvas.width, canvas.height);
             context.beginPath();
+        }
+
+        function enableErase() {
+            erasing = true;
+        }
+
+        function enableDraw() {
+            erasing = false;
         }
 
         function sendSketch() {
