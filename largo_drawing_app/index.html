@@ -4,31 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sketch Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
             width: 100%;
+            font-family: 'Roboto', sans-serif;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            background-color: #f0f2f5;
         }
         #canvasContainer {
             flex-grow: 1;
-            width: 100%;
+            width: 90%;
+            max-width: 1200px;
             display: flex;
             justify-content: center;
             align-items: center;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            margin: 20px 0;
         }
         #sketchCanvas {
             width: 100%;
             height: 100%;
-            border: 1px solid #000000;
+            border: none;
+            border-radius: 8px;
         }
-        button {
-            margin: 10px;
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        button, input[type="file"] {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover, input[type="file"]:hover {
+            background-color: #0056b3;
+        }
+        h1 {
+            color: #333;
         }
     </style>
 </head>
@@ -37,10 +66,13 @@
     <div id="canvasContainer">
         <canvas id="sketchCanvas"></canvas>
     </div>
-    <button id="clearButton">Clear</button>
-    <button id="eraseButton">Erase</button>
-    <button id="drawButton">Draw</button>
-    <button id="sendButton">Send Sketch</button>
+    <div id="buttonContainer">
+        <button id="clearButton">Clear</button>
+        <button id="eraseButton">Erase</button>
+        <button id="drawButton">Draw</button>
+        <input type="file" id="uploadButton" accept="image/*">
+        <button id="sendButton">Send Sketch</button>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
     <script type="text/javascript">
@@ -74,6 +106,7 @@
         document.getElementById('eraseButton').addEventListener('click', enableErase);
         document.getElementById('drawButton').addEventListener('click', enableDraw);
         document.getElementById('sendButton').addEventListener('click', sendSketch);
+        document.getElementById('uploadButton').addEventListener('change', uploadImage);
 
         function getRelativePos(event) {
             const rect = canvas.getBoundingClientRect();
@@ -137,10 +170,25 @@
             erasing = false;
         }
 
+        function uploadImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    sendImage(e.target.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
         function sendSketch() {
             const dataURL = canvas.toDataURL('image/png');
+            sendImage(dataURL);
+        }
+
+        function sendImage(imageData) {
             const templateParams = {
-                image_base64: dataURL,
+                image_base64: imageData,
                 to_email: 'user@example.com' // Replace with your email
             };
 
