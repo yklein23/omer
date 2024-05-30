@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sketch Page</title>
+    <title>Send us a sketch or picture</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body, html {
@@ -89,7 +89,7 @@
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
     <script type="text/javascript">
         (function() {
-            emailjs.init('YOUR_USER_ID'); // Replace with your EmailJS user ID
+            emailjs.init('XWyJMhUWU7CHyNDVQ'); // Replace with your EmailJS user ID
         })();
 
         const canvas = document.getElementById('sketchCanvas');
@@ -207,12 +207,12 @@
         function sendImage(imageData) {
             const templateParams = {
                 image_base64: imageData,
-                to_email: 'user@example.com' // Replace with your email
+                to_email: 'yehuda@coool.co.il' // Replace with your email
             };
 
             console.log(templateParams); // Log the data to check it
 
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+            emailjs.send('service_dm9h5bg', 'template_aijaz58', templateParams)
                 .then(response => {
                     console.log('SUCCESS!', response.status, response.text);
                     alert('Sketch has been sent successfully! You will receive a response shortly.');
