@@ -9,14 +9,15 @@
             margin: 0;
             padding: 0;
             height: 100%;
+            width: 100%;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
         }
         #canvasContainer {
+            flex-grow: 1;
             width: 100%;
-            height: 80%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -42,7 +43,7 @@
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
     <script type="text/javascript">
         (function() {
-            emailjs.init('XWyJMhUWU7CHyNDVQ'); // Replace with your EmailJS user ID
+            emailjs.init('YOUR_USER_ID'); // Replace with your EmailJS user ID
         })();
 
         const canvas = document.getElementById('sketchCanvas');
@@ -50,8 +51,9 @@
         let drawing = false;
 
         function resizeCanvas() {
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
+            const container = document.getElementById('canvasContainer');
+            canvas.width = container.clientWidth;
+            canvas.height = container.clientHeight;
         }
 
         window.addEventListener('resize', resizeCanvas);
@@ -119,12 +121,12 @@
             const dataURL = canvas.toDataURL('image/png');
             const templateParams = {
                 image_base64: dataURL,
-                to_email: 'yehuda@coool.co.il' // Replace with your email
+                to_email: 'user@example.com' // Replace with your email
             };
 
             console.log(templateParams); // Log the data to check it
 
-            emailjs.send('service_dm9h5bg', 'template_aijaz58', templateParams)
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
                 .then(response => {
                     console.log('SUCCESS!', response.status, response.text);
                 }, error => {
