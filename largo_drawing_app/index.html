@@ -52,7 +52,6 @@
         function resizeCanvas() {
             canvas.width = canvas.offsetWidth;
             canvas.height = canvas.offsetHeight;
-            context.scale(canvas.width / 500, canvas.height / 500);
         }
 
         window.addEventListener('resize', resizeCanvas);
@@ -69,12 +68,19 @@
         document.getElementById('clearButton').addEventListener('click', clearCanvas);
         document.getElementById('sendButton').addEventListener('click', sendSketch);
 
-        function getTouchPos(canvas, touchEvent) {
+        function getRelativePos(event) {
             const rect = canvas.getBoundingClientRect();
-            return {
-                x: touchEvent.touches[0].clientX - rect.left,
-                y: touchEvent.touches[0].clientY - rect.top
-            };
+            if (event.touches) {
+                return {
+                    x: event.touches[0].clientX - rect.left,
+                    y: event.touches[0].clientY - rect.top
+                };
+            } else {
+                return {
+                    x: event.clientX - rect.left,
+                    y: event.clientY - rect.top
+                };
+            }
         }
 
         function startDrawing(event) {
@@ -93,25 +99,15 @@
             event.preventDefault();
             if (!drawing) return;
 
-            let x, y;
-            if (event.type === 'mousemove') {
-                const rect = canvas.getBoundingClientRect();
-                x = event.clientX - rect.left;
-                y = event.clientY - rect.top;
-            } else if (event.type === 'touchmove') {
-                const touchPos = getTouchPos(canvas, event);
-                x = touchPos.x;
-                y = touchPos.y;
-            }
-
+            const pos = getRelativePos(event);
             context.lineWidth = 5;
             context.lineCap = 'round';
             context.strokeStyle = 'black';
 
-            context.lineTo(x, y);
+            context.lineTo(pos.x, pos.y);
             context.stroke();
             context.beginPath();
-            context.moveTo(x, y);
+            context.moveTo(pos.x, pos.y);
         }
 
         function clearCanvas() {
