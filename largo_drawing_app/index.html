@@ -41,20 +41,21 @@
             justify-content: center;
             align-items: center;
             gap: 10px;
+            flex-wrap: wrap;
         }
-        button, input[type="file"] {
+        button, input[type="file"], input[type="color"] {
             padding: 10px 20px;
             margin: 5px;
             border: none;
             border-radius: 4px;
-            background-color: #007bff;
+            background-color: #44DBBD;
             color: #fff;
             font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s;
         }
-        button:hover, input[type="file"]:hover {
-            background-color: #0056b3;
+        button:hover, input[type="file"]:hover, input[type="color"]:hover {
+            background-color: #3BAE98;
         }
         h1 {
             color: #333;
@@ -70,6 +71,7 @@
         <button id="clearButton">Clear</button>
         <button id="eraseButton">Erase</button>
         <button id="drawButton">Draw</button>
+        <input type="color" id="colorPicker" value="#000000">
         <input type="file" id="uploadButton" accept="image/*">
         <button id="sendButton">Send Sketch</button>
     </div>
@@ -84,6 +86,7 @@
         const context = canvas.getContext('2d');
         let drawing = false;
         let erasing = false;
+        let currentColor = '#000000';
 
         function resizeCanvas() {
             const container = document.getElementById('canvasContainer');
@@ -107,6 +110,7 @@
         document.getElementById('drawButton').addEventListener('click', enableDraw);
         document.getElementById('sendButton').addEventListener('click', sendSketch);
         document.getElementById('uploadButton').addEventListener('change', uploadImage);
+        document.getElementById('colorPicker').addEventListener('change', changeColor);
 
         function getRelativePos(event) {
             const rect = canvas.getBoundingClientRect();
@@ -147,7 +151,7 @@
                 context.strokeStyle = 'white';
                 context.globalCompositeOperation = 'destination-out';
             } else {
-                context.strokeStyle = 'black';
+                context.strokeStyle = currentColor;
                 context.globalCompositeOperation = 'source-over';
             }
 
@@ -168,6 +172,10 @@
 
         function enableDraw() {
             erasing = false;
+        }
+
+        function changeColor(event) {
+            currentColor = event.target.value;
         }
 
         function uploadImage(event) {
