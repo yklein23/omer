@@ -200,7 +200,7 @@
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    sendImage(e.target.result);
+                    sendImage(e.target.result, document.getElementById('emailInput').value);
                 };
                 reader.readAsDataURL(file);
             }
@@ -224,7 +224,7 @@
                 user_email: userEmail
             };
 
-            console.log(templateParams); // Log the data to check it
+            console.log('Sending template params:', templateParams); // Log the data to check it
 
             emailjs.send('service_dm9h5bg', 'template_aijaz58', templateParams)
                 .then(response => {
